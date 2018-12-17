@@ -1,14 +1,24 @@
-body {
+body, html {
   background: #232323;
   font-family: 'IBM Plex Sans', sans-serif;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex-wrap: wrap;
 }
 
 .viewport {
   margin: 0 auto;
   width: 1096px;
-  height: 250px;
-  overflow:hidden;
+  height: 400px;
+  overflow: hidden;
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .middle {
@@ -20,15 +30,18 @@ body {
   z-index: 200;
 }
 
+.winning-card {
+  z-index: 9999;
+}
+
 .buttons {
   margin: 0 auto;
   width: 1096px;
 }
 
 .slider {
-/*   transition: all 10000ms cubic-bezier(.09,.08,.1,.99); */
   display: inline-block;
-  margin-left: -125px;
+  transform: translateX(-125px);
 }
 
 .slider>ul li {

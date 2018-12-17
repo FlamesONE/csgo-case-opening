@@ -1,23 +1,40 @@
 // A $( document ).ready() block.
 $( document ).ready(function() {
   $( ".start" ).click(function() {
-    var numberRand = -10890 - (Math.floor(Math.random() * 250) + 1);
-    $( ".slider" ).css('transition','all 10000ms cubic-bezier(.09,.08,.1,.99');
-    $( ".slider" ).css('transform','translateX(' + numberRand + 'px)');
+    var cardSize = 250;
+    var marginSize = 24;
+    var winningCardNumber = 58;
+    $( 'ul li:nth-child(' + winningCardNumber + ')' ).addClass('winning-card');
+    var startOfWinningCard = -Math.abs(((cardSize / 2) + marginSize) + ((cardSize + marginSize) * (winningCardNumber - 4))) - (cardSize / 2);
+    var centerOfWinningCard = startOfWinningCard - cardSize / 2;
+    var numberRand = (Math.floor(Math.random() * 250) + 1);
+    var totalTranslate = startOfWinningCard - numberRand;
+    var animationTime = 10000;
+    $( ".slider" ).css('transition','all ' + animationTime + 'ms cubic-bezier(.09,.08,.1,.99');
+    $( ".slider" ).css('transform','translateX(' + totalTranslate + 'px)');
+    setTimeout(() => { finishedSliding(centerOfWinningCard) }, animationTime + 500);
   });
-  
-  $( ".reset" ).click(function() {
-    $( ".slider" ).css('transition','none');
-    $( ".slider" ).css('transform','translateX(0px)');
-    
-  });
+
+  function finishedSliding(centerOfWinningCard) {
+    $( ".slider" ).css('transition','all 300ms');
+    $( ".slider" ).css('transform','translateX(' + centerOfWinningCard + 'px)');
+    setTimeout(() => { popUpItem() }, 1000);
+  }
+
+  function popUpItem(){
+    $(".middle").css('display', 'none');
+    $( ".winning-card" ).css('transition','all 300ms');
+    $( ".winning-card" ).css('transform','scale(1.5)');
+    $( "li:not(.winning-card)" ).css('transition','all 300ms');
+    $( "li:not(.winning-card)" ).css('opacity', '.3');
+  }
 
   var itemTypes = [
     {name: "Mil-Spec", chance: 79.92, class: "mil-spec"},
     {name: "Restricted", chance: 15.98, class: "restricted"},
     {name: "Classified", chance: 3.2, class: "classified"},
     {name: "Covert", chance: 0.64, class: "covert"},
-    {name: "Exceedingly Rare", class: 0.26, color: "exceedingly-rare"}
+    {name: "Exceedingly Rare", chance: 0.26, class: "exceedingly-rare"}
   ];
 
   var caseSpectrum2 = [
@@ -56,22 +73,26 @@ $( document ).ready(function() {
     fillSlider(caseSpectrum2);
   });
   
-  
+  function resetSlider() {
+    $(".middle").css('display', '');
+    $( ".slider" ).css('transition','none');
+    $( ".slider" ).css('transform','translateX(-125px)');
+  }
+
   function fillSlider(caseData) {
+    resetSlider();
     var cards = [];
     var startItem = 0;
-    var totalCardsAmount = 45;
+    var totalCardsAmount = 60;
     fillCards(caseData, cards, totalCardsAmount, startItem);
-    var arr = shuffle(cards);
-    $( ".slider > ul" ).html( arr );
+    $( ".slider > ul" ).html( cards );
   }
   
   function fillCards(caseData, cards, totalCardsAmount, startItem) {
-    if(startItem > totalCardsAmount){
+    if(startItem >= totalCardsAmount){
       return cards;
     }
     var randomNumber = parseFloat(Math.random() * 100).toFixed(2);
-    console.log(randomNumber)
     var chosenItem;
     var itemType;
     var previousChance;
@@ -83,21 +104,21 @@ $( document ).ready(function() {
         previousChance = previousChance + itemTypes[k-1].chance;
         currentChance = itemTypes[k].chance + previousChance;
       }
+
       if(randomNumber <= currentChance && randomNumber > previousChance){
-        console.log(Math.floor(Math.random() * caseData[k].items.length))
+        console.log(randomNumber);
         chosenItem = caseData[k].items[Math.floor(Math.random() * caseData[k].items.length)];
         itemType = itemTypes[k].class;
+        console.log(chosenItem);
+        cards.push('<li class="'+ itemType + '"><img src="' + chosenItem.imageUrl + '"><span class="cover"><span class="centered">' + chosenItem.item + '</span><span class="centered2">' + chosenItem.skin + '</span></span></li>')
       }
     }
-    console.log(chosenItem)
-
-    cards.push('<li class="'+ itemType + '"><img src="' + chosenItem.imageUrl + '"><span class="cover"><span class="centered">' + chosenItem.item + '</span><span class="centered2">' + chosenItem.skin + '</span></span></li>')
-  
-    
+   
     startItem++;
-    fillCards(caseData, cards, totalCardsAmount, startItem)
-    
+    fillCards(caseData, cards, totalCardsAmount, startItem)  
   }
+
+  fillSlider(caseSpectrum2);
   
   function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
