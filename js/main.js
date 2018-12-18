@@ -1,6 +1,8 @@
 // A $( document ).ready() block.
 $( document ).ready(function() {
+
   $( ".start" ).click(function() {
+    var card = $( ".slider ul li" );
     var cardSize = 250;
     var marginSize = 24;
     var winningCardNumber = 58;
@@ -10,21 +12,24 @@ $( document ).ready(function() {
     var numberRand = (Math.floor(Math.random() * 250) + 1);
     var totalTranslate = startOfWinningCard - numberRand;
     var animationTime = 10000;
-    $( ".slider" ).css('transition','all ' + animationTime + 'ms cubic-bezier(.09,.08,.1,.99');
-    $( ".slider" ).css('transform','translateX(' + totalTranslate + 'px)');
-    setTimeout(() => { finishedSliding(centerOfWinningCard) }, animationTime + 500);
+
+    card.css('transition','all ' + animationTime + 'ms cubic-bezier(.09,.08,.1,.99');
+    card.css('transform','translateX(' + totalTranslate + 'px)');
+    
+    setTimeout(() => { finishedSliding(centerOfWinningCard, card) }, animationTime + 500);
   });
 
-  function finishedSliding(centerOfWinningCard) {
-    $( ".slider" ).css('transition','all 300ms');
-    $( ".slider" ).css('transform','translateX(' + centerOfWinningCard + 'px)');
-    setTimeout(() => { popUpItem() }, 1000);
+  function finishedSliding(centerOfWinningCard, card) {
+    card.css('transition','all 300ms');
+    card.css('transform','translateX(' + centerOfWinningCard + 'px)');
+    setTimeout(() => { popUpItem(centerOfWinningCard) }, 1000);
   }
 
-  function popUpItem(){
-    $(".middle").css('display', 'none');
-    $( ".winning-card" ).css('transition','all 300ms');
-    $( ".winning-card" ).css('transform','scale(1.5)');
+  function popUpItem(centerOfWinningCard){
+    var winningCard = $( ".winning-card" )
+    $( ".middle" ).css('display', 'none');
+    winningCard.css('transition','all 300ms');
+    winningCard.css('transform','translateX(' + centerOfWinningCard + 'px) scale(1.5)');
     $( "li:not(.winning-card)" ).css('transition','all 300ms');
     $( "li:not(.winning-card)" ).css('opacity', '.3');
   }
@@ -74,9 +79,10 @@ $( document ).ready(function() {
   });
   
   function resetSlider() {
+    var card = $( ".slider ul li" );
     $(".middle").css('display', '');
-    $( ".slider" ).css('transition','none');
-    $( ".slider" ).css('transform','translateX(-125px)');
+    card.css('transition','none');
+    card.css('transform','translateX(-125px)');
   }
 
   function fillSlider(caseData) {

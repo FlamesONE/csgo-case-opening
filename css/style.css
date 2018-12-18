@@ -31,7 +31,7 @@ body, html {
 }
 
 .winning-card {
-  z-index: 9999;
+  z-index: 100;
 }
 
 .buttons {
@@ -41,7 +41,7 @@ body, html {
 
 .slider {
   display: inline-block;
-  transform: translateX(-125px);
+
 }
 
 .slider>ul li {
@@ -59,6 +59,7 @@ body, html {
   margin-right: 24px;
   position: relative;
   border-radius: 2px;
+  transform: translateX(-125px);
 }
 
 .slider>ul li.mil-spec span.cover {
