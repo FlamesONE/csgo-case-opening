@@ -16,22 +16,26 @@ $( document ).ready(function() {
     card.css('transition','all ' + animationTime + 'ms cubic-bezier(.09,.08,.1,.99');
     card.css('transform','translateX(' + totalTranslate + 'px)');
     
-    setTimeout(() => { finishedSliding(centerOfWinningCard, card) }, animationTime + 500);
+    setTimeout(() => { finishedSliding(centerOfWinningCard, card, winningCardNumber) }, animationTime + 500);
   });
 
-  function finishedSliding(centerOfWinningCard, card) {
+  function finishedSliding(centerOfWinningCard, card, winningCardNumber) {
     card.css('transition','all 300ms');
     card.css('transform','translateX(' + centerOfWinningCard + 'px)');
-    setTimeout(() => { popUpItem(centerOfWinningCard) }, 1000);
+    setTimeout(() => { popUpItem(centerOfWinningCard, winningCardNumber) }, 1000);
   }
 
-  function popUpItem(centerOfWinningCard){
+  function popUpItem(centerOfWinningCard, winningCardNumber){
     var winningCard = $( ".winning-card" )
     $( ".middle" ).css('display', 'none');
     winningCard.css('transition','all 300ms');
     winningCard.css('transform','translateX(' + centerOfWinningCard + 'px) scale(1.5)');
-    $( "li:not(.winning-card)" ).css('transition','all 300ms');
-    $( "li:not(.winning-card)" ).css('opacity', '.3');
+    $( "ul li:nth-child(" + (winningCardNumber - 2) + ")" ).css('opacity', '.3');
+    $( "ul li:nth-child(" + (winningCardNumber - 1) + ")" ).css('opacity', '.3');
+    $( "ul li:nth-child(" + (winningCardNumber + 1) + ")" ).css('opacity', '.3');
+    $( "ul li:nth-child(" + (winningCardNumber + 2) + ")" ).css('opacity', '.3');
+    // $( "ul li:not(.winning-card)" ).css('transition','all 300ms');
+    // $( "li:not(.winning-card)" ).css('opacity', '.3');
   }
 
   var itemTypes = [

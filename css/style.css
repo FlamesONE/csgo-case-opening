@@ -30,6 +30,11 @@ body, html {
   z-index: 200;
 }
 
+/* CHECK */
+*{
+  transform: translateZ(0);
+}
+
 .winning-card {
   z-index: 100;
 }
