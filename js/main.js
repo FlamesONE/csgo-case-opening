@@ -14,14 +14,14 @@ $( document ).ready(function() {
     var animationTime = 10000;
 
     card.css('transition','all ' + animationTime + 'ms cubic-bezier(.09,.08,.1,.99');
-    card.css('transform','translateX(' + totalTranslate + 'px)');
+    card.css('transform','translateX(' + totalTranslate + 'px) rotate3d(0,0,0, 0deg');
     
     setTimeout(() => { finishedSliding(centerOfWinningCard, card, winningCardNumber) }, animationTime + 500);
   });
 
   function finishedSliding(centerOfWinningCard, card, winningCardNumber) {
     card.css('transition','all 300ms');
-    card.css('transform','translateX(' + centerOfWinningCard + 'px)');
+    card.css('transform','translateX(' + centerOfWinningCard + 'px) scale(1) rotate3d(0,0,0, 0deg');
     setTimeout(() => { popUpItem(centerOfWinningCard, winningCardNumber) }, 1000);
   }
 
@@ -29,7 +29,7 @@ $( document ).ready(function() {
     var winningCard = $( ".winning-card" )
     $( ".middle" ).css('display', 'none');
     winningCard.css('transition','all 300ms');
-    winningCard.css('transform','translateX(' + centerOfWinningCard + 'px) scale(1.5)');
+    winningCard.css('transform','translateX(' + centerOfWinningCard + 'px) scale(1.5) rotate3d(1,1,0, 360deg');
     $( "ul li:nth-child(" + (winningCardNumber - 2) + ")" ).css('opacity', '.3');
     $( "ul li:nth-child(" + (winningCardNumber - 1) + ")" ).css('opacity', '.3');
     $( "ul li:nth-child(" + (winningCardNumber + 1) + ")" ).css('opacity', '.3');
@@ -77,7 +77,8 @@ $( document ).ready(function() {
       {item: "Gut Knife", skin: "Lore", imageUrl: 'https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_knife_gut_cu_gut_lore_light_large.5cf5a77978675bd3d276a86017e6d1fcacd7bf00.png'}
     ]},  
   ];
-  
+
+
   $( ".fill" ).click(function() {
     fillSlider(caseSpectrum2);
   });
@@ -106,6 +107,7 @@ $( document ).ready(function() {
     var chosenItem;
     var itemType;
     var previousChance;
+    // itemTypes.find(itemu => itemu.name == "Mil-Spec").chance
     for(k = 0; k < itemTypes.length; k++){
       if(k === 0){
         previousChance = 0;

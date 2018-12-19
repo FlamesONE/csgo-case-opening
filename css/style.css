@@ -32,7 +32,7 @@ body, html {
 
 /* CHECK */
 *{
-  transform: translateZ(0);
+  /* transform: translateZ(0); */
 }
 
 .winning-card {
@@ -68,25 +68,24 @@ body, html {
 }
 
 .slider>ul li.mil-spec span.cover {
-  background: linear-gradient(90deg, #516CF6 0%, #3B4EB3 100%);
+  background: linear-gradient(90deg, #516CF6 0%, #1C32A4 100%);
 }
 
 .slider>ul li.restricted  span.cover {
-  background: linear-gradient(90deg, #7F50F6 0%, #5737A8 100%);
+  background: linear-gradient(90deg, #9452FF 0%, #5721B0 100%);
 }
 
 .slider>ul li.classified  span.cover {
-  background: linear-gradient(90deg, #C243DE 0%, #7F2C91 100%);
+  background: linear-gradient(90deg, #C243DE 0%, #740C8B 100%);
 }
 
 .slider>ul li.covert  span.cover {
-  background: linear-gradient(90deg, #D95752 0%, #A6423F 100%);
+  background: linear-gradient(90deg, #D95752 0%, #822020 100%);
 }
 
 .slider>ul li.exceedingly-rare  span.cover {
-  background: linear-gradient(90deg, #F2962B 0%, #BF7722 100%);
+  background: linear-gradient(90deg, #F2962B 0%, #B66303 100%);
 }
-
 
 span.centered {
   position: absolute;
