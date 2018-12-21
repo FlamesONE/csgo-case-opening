@@ -1,0 +1,33 @@
+cases [0]
+  name = caseSpectrum2
+  items[0]
+    type = Mil-Spec
+    items[0]
+      name = Glock-18
+      skin = Off-World
+      stattrack b = true
+      imageUrl = https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_glock_cu_glock_indigo_light_large.3786c7c3be7d03ee053050af2f7a8427782742e1.png
+  items[1]
+    type = Mil-Spec
+    items[0]
+      name = Glock-18
+      skin = Off-World
+      stattrack b = true
+      imageUrl = https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_glock_cu_glock_indigo_light_large.3786c7c3be7d03ee053050af2f7a8427782742e1.png
+
+cases[1]
+  name = caseSpectrum2
+  items[0]
+    type = Mil-Spec
+    items[0]
+      name = Glock-18
+      skin = Off-World
+      stattrack b = true
+      imageUrl = https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_glock_cu_glock_indigo_light_large.3786c7c3be7d03ee053050af2f7a8427782742e1.png
+  items[1]
+    type = Mil-Spec
+    items[0]
+      name = Glock-18
+      skin = Off-World
+      stattrack b = true
+      imageUrl = https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_glock_cu_glock_indigo_light_large.3786c7c3be7d03ee053050af2f7a8427782742e1.png

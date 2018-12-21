@@ -108,6 +108,7 @@ $( document ).ready(function() {
     var itemType;
     var previousChance;
     // itemTypes.find(itemu => itemu.name == "Mil-Spec").chance
+
     for(k = 0; k < itemTypes.length; k++){
       if(k === 0){
         previousChance = 0;
@@ -118,10 +119,11 @@ $( document ).ready(function() {
       }
 
       if(randomNumber <= currentChance && randomNumber > previousChance){
-        console.log(randomNumber);
-        chosenItem = caseData[k].items[Math.floor(Math.random() * caseData[k].items.length)];
+
+        var allItemsOfType = caseData.find(item => item.type == itemTypes[k].name).items
+        
+        chosenItem = allItemsOfType[Math.floor(Math.random() * allItemsOfType.length)];
         itemType = itemTypes[k].class;
-        console.log(chosenItem);
         cards.push('<li class="'+ itemType + '"><img src="' + chosenItem.imageUrl + '"><span class="cover"><span class="centered">' + chosenItem.item + '</span><span class="centered2">' + chosenItem.skin + '</span></span></li>')
       }
     }
