@@ -95,6 +95,44 @@ span.centered {
   font-weight: 500;
 }
 
+.absolute {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+span.item-detail {
+  position: relative;
+  display: flex;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 4px 8px;
+  border-radius: 100px;
+  margin-bottom: 4px;
+}
+
+span.stattrak {
+  background: #f89406;
+}
+
+span.wear {
+  background: #f89406;
+  display: none;
+}
+
+.item-details {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 8px;
+}
+
+span.no-stattrak {
+  display: none;
+}
+
 span.centered2 {
   position: absolute;
   bottom: 12px;
